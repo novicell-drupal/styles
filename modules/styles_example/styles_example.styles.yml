@@ -1,0 +1,4 @@
+styles_example:
+  library: styles_example/styles_example
+  options:
+    - primary

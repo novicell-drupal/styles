@@ -1,0 +1,4 @@
+services:
+  styles.manager:
+    class: Drupal\styles\StylesManager
+    arguments: []
