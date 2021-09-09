@@ -1,0 +1,12 @@
+styles.widget:
+  version: VERSION
+  js:
+    js/styles-widget.js: {}
+  dependencies:
+    - core/jquery
+
+styles.preview:
+  version: VERSION
+  css:
+    theme:
+      css/styles-preview.css: {}

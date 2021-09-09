@@ -9,7 +9,7 @@ use Drupal\Core\Field\FormatterBase;
  *
  * @FieldFormatter(
  *   id = "styles_class",
- *   label = @Translation("Class formatter"),
+ *   label = @Translation("CSS class formatter"),
  *   field_types = {
  *     "styles"
  *   }
@@ -20,14 +20,12 @@ class StylesClassFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 
-    foreach ($items as $delta => $item) {
-      $elements[$delta] = [
-        '#theme' => 'media_icon',
-        '#icon' => $this->viewValue($item),
-        '#width' => $this->getSetting('width'),
-        '#height' => $this->getSetting('height')
-      ];
-    }
+    /** @var \Drupal\styles\StylesManager $stylesManager */
+    $stylesManager = \Drupal::service('styles.manager');
+    $classes = $stylesManager->extractClasses($items);
+    $elements[] = [
+      '#markup' => implode(' ', $classes)
+    ];
 
     return $elements;
   }

@@ -3,3 +3,9 @@ styles_example:
   css:
     theme:
       css/styles_example.css: {}
+
+styles_example.preview:
+  version: VERSION
+  css:
+    theme:
+      css/styles_example.preview.css: {}

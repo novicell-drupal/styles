@@ -1,0 +1,30 @@
+.styles--preview.styles--selectable {
+  cursor: pointer;
+}
+
+.styles--preview.styles--preview--background {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  margin: 5px 1em 5px 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.styles--preview.styles--preview--background.styles--selected {
+  border: 1px solid white;
+}
+
+
+.styles--preview.styles--preview--button {
+  outline: 2px solid transparent !important;
+  margin: 5px 1em 5px 0 !important;
+}
+.styles--preview.styles--preview--button.styles--selectable:hover {
+  outline: 2px solid grey !important;
+}
+.styles--preview.styles--preview--button.styles--selectable.styles--selected {
+  outline: 2px solid black !important;
+}

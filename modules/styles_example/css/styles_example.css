@@ -1,4 +1,24 @@
-.red-style {
+.primary {
+  background-color: blue;
+  color: white;
+}
+.secondary {
   background-color: red;
   color: white;
+}
+.tertairy {
+  background-color: yellow;
+  color: black;
+}
+
+.adminimal .button.button--secondary, .button.button--secondary {
+  background: red;
+  border-color: red;
+  color: white;
+}
+.adminimal .button.button--secondary:hover, .adminimal .button.button--secondary:focus {
+  background: orangered;
+}
+.adminimal .button.button--secondary:active {
+  background: darkred;
 }

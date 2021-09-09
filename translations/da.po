@@ -1,11 +1,11 @@
-# Danish translation of Atoms (all releases)
-# Copyright (c) 2016 Novicell
+# Danish translation of Styles (all releases)
+# Copyright (c) 2021 Novicell
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Atoms (all releases)\n"
-"POT-Creation-Date: 2019-01-25 11:59+0000\n"
-"PO-Revision-Date: 2019-01-25 13:08+0100\n"
+"Project-Id-Version: Styles (all releases)\n"
+"POT-Creation-Date: 2021-08-31 11:59+0000\n"
+"PO-Revision-Date: 2021-08-31 13:08+0100\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -15,101 +15,30 @@ msgstr ""
 "Language: da\n"
 "X-Generator: Poedit 1.8.11\n"
 
-msgid "Atoms"
-msgstr "Atomer"
+msgid "Styles"
+msgstr "Stile"
 
-msgid "Add atomic content pieces that can be used globally."
-msgstr "Tilføj atomar indhold der kan bruges globalt."
+msgctxt "Styles"
+msgid "Style"
+msgstr "Stil"
 
-msgid "Atomic content that can be used globally."
-msgstr "Atomar indhold der kan bruges globalt."
+msgid "Add widgets for selecting styles for buttons and content boxes."
+msgstr "Tilføjer widgets til at vælge stile til knapper og indholdsbokse."
 
-msgid "Atom"
-msgstr "Atom"
+msgid "Styles value select list"
+msgstr "Valgliste med stil værdier"
 
-msgid "Tokens for atoms."
-msgstr "Symboler til atomer."
+msgid "Field with one or more styles"
+msgstr "Felt med en eller flere stile"
 
-msgid "Atoms settings"
-msgstr "Atom indstillinger"
+msgid "CSS class formatter"
+msgstr "CSS class formatter"
 
-msgid "Manage atoms."
-msgstr "Administrér atomer."
+msgid "Link with style"
+msgstr "Link med stil"
 
-msgid "Edit atom"
-msgstr "Redigér atom"
+msgid "Link field with a style"
+msgstr "Link felt med en stil"
 
-msgid "Translate"
-msgstr "Oversæt"
-
-msgid "Administer atoms"
-msgstr "Administrér atomer"
-
-msgid "Translate atom"
-msgstr "Oversæt atom"
-
-msgid "Edit"
-msgstr "Redigér"
-
-msgid "Title"
-msgstr "Titel"
-
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-msgid "Language"
-msgstr "Sprog"
-
-msgid "Operations"
-msgstr "Handlinger"
-
-msgid "Translate @title (@category)"
-msgstr "Oversæt @title (@category)"
-
-msgid "Filter modules"
-msgstr "Filtrér moduler"
-
-msgid "Filter by name or description"
-msgstr "Filtrér efter navn eller beskrivelse"
-
-msgid "Enter a part of the title or description"
-msgstr "Indtast en del af titel eller beskrivelse"
-
-msgid "Could not find plugin for field type"
-msgstr "Kunne ikke finde plugin til felttypen"
-
-msgid "Save changes"
-msgstr "Gem ændringer"
-
-msgid "@category: %group saved!"
-msgstr "@category: %group gemt!"
-
-msgid "An error occured saving @category: %group"
-msgstr "En fejl opstod under gemning af @category: %group"
-
-msgid "Edit %title"
-msgstr "Redigér %title"
-
-msgid "Translate %title"
-msgstr "Oversæt %title"
-
-msgid "No translations available."
-msgstr "Ingen oversættelser tilgængelig."
-
-msgid "Enable token support"
-msgstr "Aktivér symbol understøttelse"
-
-msgid "Default text format"
-msgstr "Standard tekst format"
-
-msgid "Allowed text formats"
-msgstr "Tilladte tekst formater"
-
-msgid "Restrict which text formats are allowed, given the user has the required permissions. If no text formats are selected, then all the ones the user has access to will be available."
-msgstr "Begræns hvilke tekst formater som er tillads, givet at brugeren har de påkrævede tilladelser. Hvis ingen tekst formater er valgt så vil alle formater som brugen har adgang til være tilgængelig."
-
-msgid "Button CSS class"
-msgstr "CSS klasse til knapper"
-
-msgid "The CSS class used for buttons type Atom. Multiple classes can be specified by seperating them with \",\"."
-msgstr "CSS klassen som skal bruges til Atom knapper. Mere end én klasse kan angives ved at separere dem med \",\"."
+msgid "Select style to use to display the link"
+msgstr "Vælg hvilken stil du vil bruge til at vise linket"
