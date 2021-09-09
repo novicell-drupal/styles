@@ -64,19 +64,19 @@ class StylesManager {
           'base_styles' => [],
           'styles' => $value['styles'] ?? []
         ];
-        if (is_array($value['libraries'])) {
+        if (is_array($value['libraries'] ?? NULL)) {
           $collection['libraries'] = $value['libraries'];
-        } elseif (is_string($value['libraries'])) {
+        } elseif (is_string($value['libraries'] ?? [])) {
           $collection['libraries'] = [$value['libraries']];
         }
-        if (is_array($value['preview_libraries'])) {
+        if (is_array($value['preview_libraries'] ?? NULL)) {
           $collection['preview_libraries'] = $value['preview_libraries'];
-        } elseif (is_string($value['preview_libraries'])) {
+        } elseif (is_string($value['preview_libraries'] ?? [])) {
           $collection['preview_libraries'] = [$value['preview_libraries']];
         }
-        if (is_array($value['base_styles'])) {
+        if (is_array($value['base_styles'] ?? NULL)) {
           $collection['base_styles'] = $value['base_styles'];
-        } elseif (is_string($value['base_styles'])) {
+        } elseif (is_string($value['base_styles'] ?? [])) {
           $collection['base_styles'] = [$value['base_styles']];
         }
 

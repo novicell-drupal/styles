@@ -2,6 +2,9 @@ styles.widget:
   version: VERSION
   js:
     js/styles-widget.js: {}
+  css:
+    theme:
+      css/styles-widget.css: {}
   dependencies:
     - core/jquery
 

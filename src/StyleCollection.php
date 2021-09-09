@@ -60,13 +60,18 @@ class StyleCollection {
   /**
    * @return array
    */
-  public function getPreviewClasses($styles, $active = FALSE, $default_preview_style = '') {
+  public function getPreviewClasses($styles, $active = FALSE, $toggle = FALSE, $default_preview_style = '') {
     $classes = $this->getClasses($styles);
-    $classes = array_merge($classes, ['styles--selectable', 'styles--preview']);
+    $classes[] = 'styles--preview';
     if (!empty($this->preview_style)) {
       $classes[] = 'styles--preview--' . $this->preview_style;
     } elseif (!empty($default_preview_style)) {
       $classes[] = 'styles--preview--' . $default_preview_style;
+    }
+    if ($toggle) {
+      $classes[] = 'styles--toggleable';
+    } else {
+      $classes[] = 'styles--selectable';
     }
     if ($active) {
       $classes[] = 'styles--selected';

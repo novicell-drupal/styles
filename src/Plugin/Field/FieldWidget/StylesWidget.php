@@ -7,6 +7,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element\Checkboxes;
 use Drupal\styles\StylesManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -58,29 +59,33 @@ class StylesWidget extends WidgetBase {
 
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $value = $items->getValue() ?? [];
+    $values = [];
+    foreach ($value as $item) {
+      $values[] = $item['value'];
+    }
     $collection_id = $this->getFieldSetting('collection');
     $collection = $this->stylesManager->getCollection($collection_id);
     $form_item_id = Html::getUniqueId('styles-widget');
+    $multiple = $this->fieldDefinition->getFieldStorageDefinition()->isMultiple();
 
-    $form['#attached']['library'] = array_merge($form['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+    $element['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
 
     $default = [];
     foreach ($value as $item) {
       $default[] = $item['value'];
     }
     $options = $this->stylesManager->getOptions($collection_id);
-    $element = [
-      '#type' => 'checkboxes',
-      '#default_value' => $default ?? [],
-      '#options' => $options,
-      '#attributes' => [
-        'id' => $form_item_id
-      ]
+    $element += [
+      '#type' => 'item',
     ];
 
-    $element['styles'] = [
-      '#type' => 'container',
+    $element['style'] = [
+      '#type' => 'checkboxes',
+      '#id' => $form_item_id,
+      '#default_value' => $default ?? [],
+      '#options' => $options,
     ];
+
     foreach ($options as $style => $label) {
       $element['styles'][$style] = [
         '#type' => 'container',
@@ -88,9 +93,17 @@ class StylesWidget extends WidgetBase {
       ];
       $element['styles'][$style]['#attributes']['data-widget'] = $form_item_id;
       $element['styles'][$style]['#attributes']['data-style'] = $style;
-      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, ($value == $style));
+      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, in_array($style, $values), $multiple);
     }
 
+    return $element;
+  }
+
+  /**
+   * Processes a checkboxes form element.
+   */
+  public static function processStyleWidget(&$element, FormStateInterface $form_state, &$complete_form) {
+    dpm($element);
     return $element;
   }
 
@@ -98,12 +111,6 @@ class StylesWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
-    $result = [];
-    foreach ($values as $key => $value) {
-      if (!empty($value)) {
-        $result[] = $value;
-      }
-    }
-    return $result;
+    return Checkboxes::getCheckedCheckboxes($values['style']);
   }
 }

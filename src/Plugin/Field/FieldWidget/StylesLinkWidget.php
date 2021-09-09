@@ -100,7 +100,7 @@ class StylesLinkWidget extends LinkWidget {
       ];
       $element['styles'][$style]['#attributes']['data-widget'] = $form_item_id;
       $element['styles'][$style]['#attributes']['data-style'] = $style;
-      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, ($selected_style == $style));
+      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, ($selected_style == $style), FALSE, 'button');
     }
 
     return $element;
