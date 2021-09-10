@@ -17,6 +17,15 @@
   border: 2px inset lightgrey;
 }
 
+.styles--preview.styles--preview--background.styles--selectable.styles--empty {
+  background-image: linear-gradient(45deg, #ffffff 25%, #ff6b6b 25%, #ff6b6b 50%, #ffffff 50%, #ffffff 75%, #ff6b6b 75%, #ff6b6b 100%);
+  background-size: 56.57px 56.57px;
+  width: 80px;
+  height: 80px;
+  top: 20px;
+  position: relative;
+}
+
 
 .styles--preview.styles--preview--button {
   outline: 2px solid transparent !important;

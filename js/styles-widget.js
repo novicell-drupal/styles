@@ -7,7 +7,9 @@ Drupal.behaviors.styles_widget = {
       jQuery('.styles--selectable[data-widget=' + jQuery(this).data('widget') + ']').removeClass('styles--selected');
       jQuery(this).addClass('styles--selected');
       widget.find('input[type=checkbox]').prop( 'checked', false );
-      widget.find('input[value=' + style + ']').prop( 'checked', true );
+      if (!jQuery(this).hasClass('styles--empty')) {
+        widget.find('input[value=' + style + ']').prop('checked', true);
+      }
     });
     jQuery('.styles--toggleable', context).click(function(e) {
       e.preventDefault();

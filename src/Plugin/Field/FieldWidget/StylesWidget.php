@@ -95,15 +95,16 @@ class StylesWidget extends WidgetBase {
       $element['styles'][$style]['#attributes']['data-style'] = $style;
       $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, in_array($style, $values), $multiple);
     }
+    if (!$element['#required'] && !$multiple) {
+      $element['styles']['_none'] = [
+        '#type' => 'container',
+        0 => ['#markup' => t('- None -')]
+      ];
+      $element['styles']['_none']['#attributes']['data-widget'] = $form_item_id;
+      $element['styles']['_none']['#attributes']['data-style'] = '';
+      $element['styles']['_none']['#attributes']['class'] = $collection->getPreviewClasses('', empty($values));
+    }
 
-    return $element;
-  }
-
-  /**
-   * Processes a checkboxes form element.
-   */
-  public static function processStyleWidget(&$element, FormStateInterface $form_state, &$complete_form) {
-    dpm($element);
     return $element;
   }
 

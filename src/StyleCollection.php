@@ -61,7 +61,11 @@ class StyleCollection {
    * @return array
    */
   public function getPreviewClasses($styles, $active = FALSE, $toggle = FALSE, $default_preview_style = '') {
-    $classes = $this->getClasses($styles);
+    if (empty($styles)) {
+      $classes = ['styles--empty'];
+    } else {
+      $classes = $this->getClasses($styles);
+    }
     $classes[] = 'styles--preview';
     if (!empty($this->preview_style)) {
       $classes[] = 'styles--preview--' . $this->preview_style;
