@@ -13,7 +13,6 @@ button_example:
   preview_libraries: styles_example/styles_example
   base_styles:
     - button
-    - premium
   preview_style: button
   styles:
     button--primary: Primary

@@ -19,3 +19,48 @@ function styles_rebuild() {
   $stylesManager = \Drupal::service('styles.manager');
   $stylesManager->rebuild();
 }
+
+/**
+ * Implements hook_theme().
+ */
+function styles_theme() {
+  return [
+    'styles_preview' => [
+      'variables' => [
+        'label' => '',
+        'collection' => '',
+        'preview_type' => '',
+        'style' => '',
+        'form_item_id' => '',
+        'active' => FALSE,
+        'toggle' => FALSE
+      ]
+    ],
+  ];
+}
+
+function template_preprocess_styles_preview(&$variables) {
+  /** @var \Drupal\styles\StylesManager $stylesManager */
+  $stylesManager = \Drupal::service('styles.manager');
+  $collection = $stylesManager->getCollection($variables['collection']);
+  $style = $variables['style'];
+
+  if (empty($style)) {
+    $variables['title'] = t('- None -');
+  } else {
+    $variables['title'] = t($collection->getStyles()[$style]);
+  }
+  $variables['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+  $variables['attributes']['data-widget'] = $variables['form_item_id'];
+  $variables['attributes']['data-style'] = $style;
+  $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function styles_theme_suggestions_styles_preview_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['preview_type'])) {
+    $suggestions[] = 'styles_preview__' . $variables['preview_type'];
+  }
+}

@@ -1,4 +1,4 @@
-.styles--preview.styles--selectable {
+.styles--preview.styles--selectable, .styles--preview.styles--toggleable {
   cursor: pointer;
 }
 

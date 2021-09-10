@@ -88,21 +88,21 @@ class StylesWidget extends WidgetBase {
 
     foreach ($options as $style => $label) {
       $element['styles'][$style] = [
-        '#type' => 'container',
-        0 => ['#markup' => $label]
+        '#theme' => 'styles_preview',
+        '#collection' => $collection_id,
+        '#style' => $style,
+        '#form_item_id' => $form_item_id,
+        '#active' => in_array($style, $values),
+        '#toggle' => $multiple
       ];
-      $element['styles'][$style]['#attributes']['data-widget'] = $form_item_id;
-      $element['styles'][$style]['#attributes']['data-style'] = $style;
-      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, in_array($style, $values), $multiple);
     }
     if (!$element['#required'] && !$multiple) {
       $element['styles']['_none'] = [
-        '#type' => 'container',
-        0 => ['#markup' => t('- None -')]
+        '#theme' => 'styles_preview',
+        '#collection' => $collection_id,
+        '#form_item_id' => $form_item_id,
+        '#active' => empty($values),
       ];
-      $element['styles']['_none']['#attributes']['data-widget'] = $form_item_id;
-      $element['styles']['_none']['#attributes']['data-style'] = '';
-      $element['styles']['_none']['#attributes']['class'] = $collection->getPreviewClasses('', empty($values));
     }
 
     return $element;
