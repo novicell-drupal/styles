@@ -7,6 +7,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Element\Checkboxes;
 use Drupal\Core\Url;
 use Drupal\link\Plugin\Field\FieldWidget\LinkWidget;
 use Drupal\styles\StylesManager;
@@ -76,18 +77,17 @@ class StylesLinkWidget extends LinkWidget {
     $collection_id = $this->getFieldSetting('collection');
     $collection = $this->stylesManager->getCollection($collection_id);
     $form_item_id = Html::getUniqueId('styles-widget');
+    $options = $this->stylesManager->getOptions($collection_id);
 
     $element['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
 
     $element['style'] = [
-      '#type' => 'hidden',
-      '#default_value' => $selected_style,
-      '#attributes' => [
-        'id' => $form_item_id
-      ]
+      '#type' => 'checkboxes',
+      '#id' => $form_item_id,
+      '#default_value' => empty($selected_style) ? [] : [$selected_style],
+      '#options' => $options,
     ];
 
-    $options = $this->stylesManager->getOptions($collection_id);
     $element['styles'] = [
       '#type' => 'item',
       '#title' => $this->t('Style', [], ['context' => 'Styles']),
@@ -106,5 +106,15 @@ class StylesLinkWidget extends LinkWidget {
     return $element;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    $values = parent::massageFormValues($values, $form, $form_state);
+    foreach ($values as $delta => $items) {
+      $values[$delta]['style'] = Checkboxes::getCheckedCheckboxes($items['style'])[0] ?? '';
+    }
+    return $values;
+  }
 
 }

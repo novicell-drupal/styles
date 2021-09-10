@@ -17,5 +17,5 @@ button_example:
   preview_style: button
   styles:
     button--primary: Primary
-    'button--secondary premium': Secondary
+    button--secondary: Secondary
     button--small: Tertairy
