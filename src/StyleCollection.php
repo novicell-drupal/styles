@@ -84,6 +84,13 @@ class StyleCollection {
   }
 
   /**
+   * @return string
+   */
+  public function getPreviewStyle() {
+    return $this->preview_style;
+  }
+
+  /**
    * @return array
    */
   public function getLibraries($include_preview = FALSE) {

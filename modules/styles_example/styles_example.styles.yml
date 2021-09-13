@@ -1,5 +1,5 @@
 styles_example:
-  label: Example
+  label: Background examples
   libraries: styles_example/styles_example
   preview_style: background
   styles:
@@ -8,7 +8,7 @@ styles_example:
     tertairy: Tertairy
 
 button_example:
-  label: Buttons
+  label: Button examples
   libraries: styles_example/styles_example
   preview_libraries: styles_example/styles_example
   base_styles:
@@ -17,4 +17,15 @@ button_example:
   styles:
     button--primary: Primary
     button--secondary: Secondary
-    button--small: Tertairy
+    button--ghost: Ghost
+    button--center: Center
+    button--right: Right
+
+text_example:
+  label: Text examples
+  libraries: styles_example/styles_example
+  preview_style: text
+  styles:
+    text--normal: Normal
+    text--italic: Italic
+    text--huge: Huge

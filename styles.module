@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Field\FieldItemListInterface;
+
 /**
  * Implements hook_locale_translation_projects_alter().
  */
@@ -26,20 +28,31 @@ function styles_rebuild() {
 function styles_theme() {
   return [
     'styles_preview' => [
-      'variables' => [
-        'label' => '',
+      'render element' => 'elements',
+      /*'variables' => [
+        'title' => '',
         'collection' => '',
         'preview_type' => '',
         'style' => '',
         'form_item_id' => '',
         'active' => FALSE,
         'toggle' => FALSE
-      ]
+      ]*/
     ],
+    'styles_preview__text' => [
+      'base hook' => 'styles_preview'
+    ]
   ];
 }
 
 function template_preprocess_styles_preview(&$variables) {
+  $variables['style'] = $variables['elements']['#style'] ?? '';
+  $variables['title'] = $variables['elements']['#title'] ?? '';
+  $variables['collection'] = $variables['elements']['#collection'] ?? '';
+  $variables['form_item_id'] = $variables['elements']['#form_item_id'] ?? '';
+  $variables['active'] = $variables['elements']['#active'] ?? FALSE;
+  $variables['toggle'] = $variables['elements']['#toggle'] ?? FALSE;
+
   /** @var \Drupal\styles\StylesManager $stylesManager */
   $stylesManager = \Drupal::service('styles.manager');
   $collection = $stylesManager->getCollection($variables['collection']);
@@ -50,17 +63,58 @@ function template_preprocess_styles_preview(&$variables) {
   } else {
     $variables['title'] = t($collection->getStyles()[$style]);
   }
-  $variables['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+  $variables['preview_type'] = $variables['elements']['#preview_type'] ?? $collection->getPreviewStyle();
+  $variables['#attached']['library'] = array_merge($variables['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
   $variables['attributes']['data-widget'] = $variables['form_item_id'];
   $variables['attributes']['data-style'] = $style;
   $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements hook_theme_suggestions_HOOK().
  */
-function styles_theme_suggestions_styles_preview_alter(array &$suggestions, array $variables) {
-  if (!empty($variables['preview_type'])) {
-    $suggestions[] = 'styles_preview__' . $variables['preview_type'];
+function styles_theme_suggestions_styles_preview(array $variables) {
+  $suggestions = [];
+  /** @var \Drupal\styles\StylesManager $stylesManager */
+  $stylesManager = \Drupal::service('styles.manager');
+  $collection = $stylesManager->getCollection($variables['elements']['#collection']);
+  $preview_type = $variables['elements']['#preview_type'] ?? $collection->getPreviewStyle();
+  if (!empty($preview_type)) {
+    $suggestions[] = 'styles_preview__' . $preview_type;
   }
+  return $suggestions;
+}
+
+/**
+ * @param \Drupal\Core\Field\FieldItemListInterface $items Entity field
+ *
+ * @return string[]
+ */
+function styles_get_classes(FieldItemListInterface $items) {
+  /** @var \Drupal\styles\StylesManager $styleManager */
+  $styleManager = \Drupal::service('styles.manager');
+  return $styleManager->extractClasses($items);
+}
+
+/**
+ * @param \Drupal\Core\Field\FieldItemListInterface $items Entity field
+ *
+ * @return \Drupal\Core\Template\Attribute
+ */
+function styles_get_attribute(FieldItemListInterface $items) {
+  /** @var \Drupal\styles\StylesManager $styleManager */
+  $styleManager = \Drupal::service('styles.manager');
+  return new \Drupal\Core\Template\Attribute(['class' => $styleManager->extractClasses($items)]);
+}
+
+/**
+ * @param \Drupal\Core\Field\FieldItemListInterface $items Entity field
+ * @param array $build Render array to apply to
+ */
+function styles_apply_to(FieldItemListInterface $items, array &$build) {
+  /** @var \Drupal\styles\StylesManager $styleManager */
+  $styleManager = \Drupal::service('styles.manager');
+  $collection = $styleManager->getCollection($items->getFieldDefinition()->getSetting('collection'));
+  $build['#attached']['library'] = array_merge($build['#attached']['library'] ?? [], $collection->getLibraries());
+  $build['#attributes']['class'] = array_merge($build['#attributes']['class'] ?? [], $styleManager->extractClasses($items));
 }

@@ -24,6 +24,7 @@ class StylesClassFormatter extends FormatterBase {
     $stylesManager = \Drupal::service('styles.manager');
     $classes = $stylesManager->extractClasses($items);
     $elements[] = [
+      '#attached' => ['library' => $stylesManager->getCollection($items->getFieldDefinition()->getSetting('collection'))->getLibraries()],
       '#markup' => implode(' ', $classes)
     ];
 
