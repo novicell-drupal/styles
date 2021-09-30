@@ -9,7 +9,14 @@ function styles_example_preprocess_node(&$variables) {
   /** @var Node $node */
   $node = $variables['node'];
   if ($node->bundle() == 'style_test') {
-    $variables['box_attributes'] = styles_get_attribute($node->get('field_background'));
+    /** @var \Drupal\styles\StylesManager $styleManager */
+    $styleManager = \Drupal::service('styles.manager');
+    $classes = array_merge($styleManager->extractClasses($node->get('field_box_style')), $styleManager->extractClasses($node->get('field_background')));
+    $variables['box_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);
     $variables['text_attributes'] = styles_get_attribute($node->get('field_text_style'));
+    $variables['content_attributes']['class'][] = 'container';
+    styles_apply_libraries($node->get('field_box_style'), $variables);
+    styles_apply_libraries($node->get('field_background'), $variables);
+    styles_apply_libraries($node->get('field_text_style'), $variables);
   }
 }

@@ -85,9 +85,12 @@ class StylesLinkFormatter extends LinkFormatter {
       $values['options']['attributes']['class'] = ($values['options']['attributes']['class'] ?? []) + $this->stylesManager->extractClasses($items, 'style', $delta);
       $item->setValue($values);
     }
-    $elements = parent::viewElements($items, $langcode);
+    $element = parent::viewElements($items, $langcode);
+    /** @var StylesLinkType $item */
+    foreach ($items as $delta => $item) {
+      $element[$delta]['#attached']['library'] = array_merge($element[$delta]['#attached']['library'] ?? [], $collection->getLibraries());
+    }
 
-    $elements['#attached']['library'] = array_merge($elements['#attached']['library'] ?? [], $collection->getLibraries());
-    return $elements;
+    return $element;
   }
 }

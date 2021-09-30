@@ -95,12 +95,14 @@ class StylesLinkWidget extends LinkWidget {
     ];
     foreach ($options as $style => $label) {
       $element['styles'][$style] = [
-        '#type' => 'container',
-        0 => ['#markup' => $label]
+        '#theme' => 'styles_preview',
+        '#collection' => $collection_id,
+        '#style' => $style,
+        '#form_item_id' => $form_item_id,
+        '#preview_type' => 'button',
+        '#active' => ($selected_style == $style),
+        '#toggle' => FALSE
       ];
-      $element['styles'][$style]['#attributes']['data-widget'] = $form_item_id;
-      $element['styles'][$style]['#attributes']['data-style'] = $style;
-      $element['styles'][$style]['#attributes']['class'] = $collection->getPreviewClasses($style, ($selected_style == $style), FALSE, 'button');
     }
 
     return $element;

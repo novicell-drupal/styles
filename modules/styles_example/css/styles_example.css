@@ -1,43 +1,75 @@
+:root {
+  --light-brown: #f8d496;
+  --light-brown-2: #f8c077;
+  --light-brown-3: #f9aa4e;
+  --light-brown-4: #ef9f3d;
+  --brown: #d79457;
+  --cherry: #ad2a3d;
+  --cherry-dark: #961b2f;
+  --cherry-light: #f83e48;
+  --cherry-light-2: #ff5861;
+  --pink: #f6b1c5;
+  --pie: rgb(239,174,102);
+}
+
 .primary {
   background-color: #0cbaba;
   background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
   color: white;
 }
 .secondary {
-  background-color: red;
+  background: repeating-radial-gradient(circle at bottom left, #fedc00 0, #fedc00 5.5555555556%, #fcb712 0, #fcb712 11.1111111111%, #f7921e 0, #f7921e 16.6666666667%, #e87f24 0, #e87f24 22.2222222222%, #dd6227 0, #dd6227 27.7777777778%, #dc4c27 0, #dc4c27 33.3333333333%, #ca3435 0, #ca3435 38.8888888889%, #b82841 0, #b82841 44.4444444444%, #953751 0, #953751 50%, #364c88 0, #364c88 55.5555555556%, #16599d 0, #16599d 61.1111111111%, #02609e 0, #02609e 66.6666666667%, #0073a9 0, #0073a9 72.2222222222%, #008aa4 0, #008aa4 77.7777777778%, #239a87 0, #239a87 83.3333333333%, #7cba6d 0, #7cba6d 88.8888888889%, #becc2f 0, #becc2f 94.4444444444%, #e0d81d 0, #e0d81d 100%), repeating-radial-gradient(circle at bottom right, #fedc00 0, #fedc00 5.5555555556%, #fcb712 0, #fcb712 11.1111111111%, #f7921e 0, #f7921e 16.6666666667%, #e87f24 0, #e87f24 22.2222222222%, #dd6227 0, #dd6227 27.7777777778%, #dc4c27 0, #dc4c27 33.3333333333%, #ca3435 0, #ca3435 38.8888888889%, #b82841 0, #b82841 44.4444444444%, #953751 0, #953751 50%, #364c88 0, #364c88 55.5555555556%, #16599d 0, #16599d 61.1111111111%, #02609e 0, #02609e 66.6666666667%, #0073a9 0, #0073a9 72.2222222222%, #008aa4 0, #008aa4 77.7777777778%, #239a87 0, #239a87 83.3333333333%, #7cba6d 0, #7cba6d 88.8888888889%, #becc2f 0, #becc2f 94.4444444444%, #e0d81d 0, #e0d81d 100%);
+  background-blend-mode: overlay;
   color: white;
 }
 .tertairy {
-  background-color: yellow;
+  background:
+    linear-gradient(-135deg, rgb(34, 76, 152) 10%, transparent),
+    repeating-linear-gradient(45deg, rgba(34, 76, 152, 1) 0%, rgba(31, 48, 94, 0.6) 5%, transparent 5%, transparent 10%),
+    repeating-linear-gradient(-45deg, rgba(34, 76, 152, 0.4) 0%, rgba(31, 48, 94, 0.5) 5%, transparent 5%, transparent 10%);
+  background-color: rgba(34, 76, 152, 0.25);
   color: black;
 }
 
-.button.button--secondary {
+.premium-layout-wrapper .button.button--primary {
+  background: blue;
+  border-color: blue;
+  color: white;
+}
+.premium-layout-wrapper .button.button--secondary {
   background: red;
   border-color: red;
   color: white;
 }
-.button.button--secondary:focus {
+.premium-layout-wrapper .button.button--secondary:focus {
   background: orangered;
 }
-.button.button--secondary:active {
+.premium-layout-wrapper .button.button--secondary:active {
   background: darkred;
 }
-.button.button--ghost {
-  border: 2px solid grey;
-  background-color: transparent;
-  color: grey;
-}
 
-.text--normal {
+.styles--preview--text.text--normal, .text--normal {
   font-size: 14px;
   font-style: normal;
 }
-.text--italic {
+.styles--preview--text.text--italic, .text--italic {
   font-size: 14px;
   font-style: italic;
 }
-.text--huge {
+.styles--preview--text.text--huge, .text--huge {
   font-size: 24px;
   font-weight: bold;
+}
+
+.box {
+  padding: 20px;
+}
+.box--border {
+  border: 3px solid black;
+}
+.box--radius {
+  border-radius: 10px;
+}
+.box--shadow {
+  box-shadow: 3px 3px 10px 3px grey;
 }

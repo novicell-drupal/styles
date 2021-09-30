@@ -7,19 +7,30 @@ styles_example:
     secondary: Secondary
     tertairy: Tertairy
 
+box_example:
+  label: Box examples
+  libraries: styles_example/styles_example
+  preview_libraries: styles_example/styles_example.preview
+  preview_style: object
+  base_styles:
+    - box
+  styles:
+    box--border: Border
+    box--radius: Radius
+    box--shadow: Shadow
+
 button_example:
   label: Button examples
   libraries: styles_example/styles_example
-  preview_libraries: styles_example/styles_example
+  preview_libraries: styles_example/styles_example.preview
   base_styles:
     - button
   preview_style: button
   styles:
+    button--normal: Normal
     button--primary: Primary
     button--secondary: Secondary
     button--ghost: Ghost
-    button--center: Center
-    button--right: Right
 
 text_example:
   label: Text examples

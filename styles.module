@@ -29,17 +29,14 @@ function styles_theme() {
   return [
     'styles_preview' => [
       'render element' => 'elements',
-      /*'variables' => [
-        'title' => '',
-        'collection' => '',
-        'preview_type' => '',
-        'style' => '',
-        'form_item_id' => '',
-        'active' => FALSE,
-        'toggle' => FALSE
-      ]*/
+    ],
+    'styles_preview__button' => [
+      'base hook' => 'styles_preview'
     ],
     'styles_preview__text' => [
+      'base hook' => 'styles_preview'
+    ],
+    'styles_preview__object' => [
       'base hook' => 'styles_preview'
     ]
   ];
@@ -68,6 +65,14 @@ function template_preprocess_styles_preview(&$variables) {
   $variables['attributes']['data-widget'] = $variables['form_item_id'];
   $variables['attributes']['data-style'] = $style;
   $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
+
+  $classes = $collection->getClasses($style);
+  $variables['object_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);
+  $variables['preview_attributes'] = new \Drupal\Core\Template\Attribute($variables['attributes']);
+  $variables['preview_attributes']['class'] = array_diff($variables['attributes']['class'], $classes);
+  foreach (explode(' ', $style) as $style_id) {
+    $variables['preview_attributes']['class'][] = 'styles--preview--' . $style_id;
+  }
 }
 
 /**
@@ -105,6 +110,17 @@ function styles_get_attribute(FieldItemListInterface $items) {
   /** @var \Drupal\styles\StylesManager $styleManager */
   $styleManager = \Drupal::service('styles.manager');
   return new \Drupal\Core\Template\Attribute(['class' => $styleManager->extractClasses($items)]);
+}
+
+/**
+ * @param \Drupal\Core\Field\FieldItemListInterface $items Entity field
+ * @param array $build Render array to apply to
+ */
+function styles_apply_libraries(FieldItemListInterface $items, array &$build) {
+  /** @var \Drupal\styles\StylesManager $styleManager */
+  $styleManager = \Drupal::service('styles.manager');
+  $collection = $styleManager->getCollection($items->getFieldDefinition()->getSetting('collection'));
+  $build['#attached']['library'] = array_merge($build['#attached']['library'] ?? [], $collection->getLibraries());
 }
 
 /**

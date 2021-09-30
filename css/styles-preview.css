@@ -6,8 +6,10 @@
   background-size: 56.57px 56.57px;
 }
 
-.styles--preview.styles--preview--background {
+.styles--preview.styles--preview--background,
+.styles--preview.styles--preview--object {
   display: inline-flex;
+  flex-wrap: wrap;
   box-shadow: 3px 3px 10px 3px grey;
   border-radius: 5px;
   width: 100px;
@@ -18,21 +20,35 @@
   box-sizing: border-box;
   position: relative;
 }
-.styles--preview.styles--preview--background.styles--selected {
+.styles--preview.styles--preview--background.styles--selected,
+.styles--preview.styles--preview--object.styles--selected{
   box-shadow: inset 3px 3px 10px 3px grey;
 }
-.styles--preview.styles--preview--background.styles--selectable.styles--empty {
+.styles--preview.styles--preview--background.styles--selectable.styles--empty,
+.styles--preview.styles--preview--object.styles--selectable.styles--empty{
   width: 80px;
   height: 80px;
   top: 10px;
+}
+
+.styles--preview.styles--preview--object {
+  background-color: white;
+}
+
+.styles--preview.styles--preview--object div {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-image: linear-gradient(45deg, #eee 25%, #ccc 25%, #ccc 50%, #eee 50%, #eee 75%, #ccc 75%, #ccc 100%);
+  background-size: 56.57px 56.57px;
 }
 
 .styles--preview.styles--preview--text {
   display: inline-block;
   box-shadow: 3px 3px 10px 3px grey;
   border-radius: 5px;
-  width: 120px;
-  height: 50px;
+  width: 160px;
+  height: 70px;
   margin: 5px 1em 5px 0;
   padding: 5px;
   position: relative;
@@ -43,20 +59,19 @@
   box-shadow: inset 3px 3px 10px 3px grey;
 }
 .styles--preview.styles--preview--text.styles--selectable.styles--empty {
-  width: 80px;
-  height: 30px;
+  width: 120px;
+  height: 50px;
   top: 10px;
   position: relative;
 }
 
-
 .styles--preview.styles--preview--button {
-  outline: 2px solid transparent !important;
-  margin: 5px 1em 5px 0 !important;
+  outline: 3px solid transparent;
+  margin: 5px 1em 5px 0;
 }
 .styles--preview.styles--preview--button.styles--selectable:hover {
-  outline: 2px solid grey !important;
+  outline: 3px solid grey;
 }
 .styles--preview.styles--preview--button.styles--selectable.styles--selected {
-  outline: 2px solid black !important;
+  outline: 3px solid black;
 }
