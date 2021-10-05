@@ -61,7 +61,9 @@ class StylesWidget extends WidgetBase {
     $value = $items->getValue() ?? [];
     $values = [];
     foreach ($value as $item) {
-      $values[] = $item['value'];
+      if (isset($item['value'])) {
+        $values[] = $item['value'];
+      }
     }
     $collection_id = $this->getFieldSetting('collection');
     $collection = $this->stylesManager->getCollection($collection_id);
@@ -70,10 +72,6 @@ class StylesWidget extends WidgetBase {
 
     $element['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
 
-    $default = [];
-    foreach ($value as $item) {
-      $default[] = $item['value'];
-    }
     $options = $this->stylesManager->getOptions($collection_id);
     $element += [
       '#type' => 'item',
@@ -82,7 +80,7 @@ class StylesWidget extends WidgetBase {
     $element['style'] = [
       '#type' => 'checkboxes',
       '#id' => $form_item_id,
-      '#default_value' => $default ?? [],
+      '#default_value' => $values ?? [],
       '#options' => $options,
     ];
 
