@@ -19,7 +19,7 @@ use Drupal\styles\StylesManager;
 use Drupal\user\UserInterface;
 
 /**
- * Plugin implementation of the Content Hierarchy field type.
+ * Plugin implementation of the Styles field type.
  *
  * @FieldType(
  *   id = "styles",
