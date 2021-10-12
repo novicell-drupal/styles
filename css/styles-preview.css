@@ -1,3 +1,18 @@
+.styles--preview.styles--preview--background,
+.styles--preview.styles--preview--icon,
+.styles--preview.styles--preview--object,
+.styles--preview.styles--preview--text {
+  box-shadow: 3px 3px 10px 3px grey;
+  border-radius: 5px;
+  margin: 5px 1em 5px 0;
+  box-sizing: border-box;
+}
+.styles--preview.styles--preview--background.styles--selected,
+.styles--preview.styles--preview--icon.styles--selected,
+.styles--preview.styles--preview--object.styles--selected,
+.styles--preview.styles--preview--text.styles--selected {
+  box-shadow: inset 3px 3px 10px 3px grey;
+}
 .styles--preview.styles--selectable, .styles--preview.styles--toggleable {
   cursor: pointer;
 }
@@ -10,19 +25,11 @@
 .styles--preview.styles--preview--object {
   display: inline-flex;
   flex-wrap: wrap;
-  box-shadow: 3px 3px 10px 3px grey;
-  border-radius: 5px;
   width: 100px;
   height: 100px;
-  margin: 5px 1em 5px 0;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   position: relative;
-}
-.styles--preview.styles--preview--background.styles--selected,
-.styles--preview.styles--preview--object.styles--selected{
-  box-shadow: inset 3px 3px 10px 3px grey;
 }
 .styles--preview.styles--preview--background.styles--selectable.styles--empty,
 .styles--preview.styles--preview--object.styles--selectable.styles--empty{
@@ -45,24 +52,30 @@
 
 .styles--preview.styles--preview--text {
   display: inline-block;
-  box-shadow: 3px 3px 10px 3px grey;
-  border-radius: 5px;
   width: 160px;
   height: 70px;
-  margin: 5px 1em 5px 0;
   padding: 5px;
   position: relative;
   overflow: hidden;
-  box-sizing: border-box;
-}
-.styles--preview.styles--preview--text.styles--selected {
-  box-shadow: inset 3px 3px 10px 3px grey;
 }
 .styles--preview.styles--preview--text.styles--selectable.styles--empty {
   width: 120px;
   height: 50px;
   top: 10px;
   position: relative;
+}
+
+.styles--preview.styles--preview--icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  padding: 5px;
+}
+.styles--preview.styles--preview--icon div {
+  width: 40px;
+  height: 40px;
+  background-size: contain;
 }
 
 .styles--preview.styles--preview--button {

@@ -38,6 +38,9 @@ function styles_theme() {
     ],
     'styles_preview__object' => [
       'base hook' => 'styles_preview'
+    ],
+    'styles_preview__icon' => [
+      'base hook' => 'styles_preview'
     ]
   ];
 }
