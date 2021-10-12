@@ -33,6 +33,9 @@ function styles_theme() {
     'styles_preview__button' => [
       'base hook' => 'styles_preview'
     ],
+    'styles_preview__color_theme' => [
+      'base hook' => 'styles_preview'
+    ],
     'styles_preview__text' => [
       'base hook' => 'styles_preview'
     ],

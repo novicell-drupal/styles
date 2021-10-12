@@ -68,9 +68,9 @@ class StyleCollection {
     }
     $classes[] = 'styles--preview';
     if (!empty($this->preview_style)) {
-      $classes[] = 'styles--preview--' . $this->preview_style;
+      $classes[] = 'styles--preview--' . str_replace('_', '-', $this->preview_style);
     } elseif (!empty($default_preview_style)) {
-      $classes[] = 'styles--preview--' . $default_preview_style;
+      $classes[] = 'styles--preview--' . str_replace('_', '-', $default_preview_style);
     }
     if ($toggle) {
       $classes[] = 'styles--toggleable';

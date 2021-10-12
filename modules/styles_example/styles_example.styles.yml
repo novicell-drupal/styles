@@ -7,6 +7,15 @@ styles_example:
     secondary: Secondary
     tertairy: Tertairy
 
+color_theme_example:
+  label: Color theme examples
+  libraries: styles_example/styles_example
+  preview_style: color_theme
+  styles:
+    primary: Primary
+    secondary: Secondary
+    tertairy: Tertairy
+
 box_example:
   label: Box examples
   libraries: styles_example/styles_example
