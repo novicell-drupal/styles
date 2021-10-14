@@ -3,7 +3,7 @@
 .styles--preview.styles--preview--icon,
 .styles--preview.styles--preview--object,
 .styles--preview.styles--preview--text {
-  box-shadow: 3px 3px 10px 3px grey;
+  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   margin: 5px 1em 5px 0;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
 .styles--preview.styles--preview--icon.styles--selected,
 .styles--preview.styles--preview--object.styles--selected,
 .styles--preview.styles--preview--text.styles--selected {
-  box-shadow: inset 3px 3px 10px 3px grey;
+  box-shadow: inset 3px 3px 10px 3px rgba(0, 0, 0, 0.5);
 }
 .styles--preview.styles--selectable, .styles--preview.styles--toggleable {
   cursor: pointer;
