@@ -1,0 +1,7 @@
+styles_example.form:
+  path: '/test/styles_example'
+  defaults:
+    _form: '\Drupal\styles_example\Form\StylesExampleForm'
+    _title: 'Example'
+  requirements:
+    _access: 'TRUE'

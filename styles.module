@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Element\RenderElement;
 
 /**
  * Implements hook_locale_translation_projects_alter().
@@ -27,6 +29,9 @@ function styles_rebuild() {
  */
 function styles_theme() {
   return [
+    'styles_element' => [
+      'render element' => 'element',
+    ],
     'styles_preview' => [
       'render element' => 'elements',
     ],
@@ -46,39 +51,6 @@ function styles_theme() {
       'base hook' => 'styles_preview'
     ]
   ];
-}
-
-function template_preprocess_styles_preview(&$variables) {
-  $variables['style'] = $variables['elements']['#style'] ?? '';
-  $variables['title'] = $variables['elements']['#title'] ?? '';
-  $variables['collection'] = $variables['elements']['#collection'] ?? '';
-  $variables['form_item_id'] = $variables['elements']['#form_item_id'] ?? '';
-  $variables['active'] = $variables['elements']['#active'] ?? FALSE;
-  $variables['toggle'] = $variables['elements']['#toggle'] ?? FALSE;
-
-  /** @var \Drupal\styles\StylesManager $stylesManager */
-  $stylesManager = \Drupal::service('styles.manager');
-  $collection = $stylesManager->getCollection($variables['collection']);
-  $style = $variables['style'];
-
-  if (empty($style)) {
-    $variables['title'] = t('- None -');
-  } else {
-    $variables['title'] = t($collection->getStyles()[$style]);
-  }
-  $variables['preview_type'] = $variables['elements']['#preview_type'] ?? $collection->getPreviewStyle();
-  $variables['#attached']['library'] = array_merge($variables['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
-  $variables['attributes']['data-widget'] = $variables['form_item_id'];
-  $variables['attributes']['data-style'] = $style;
-  $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
-
-  $classes = $collection->getClasses($style);
-  $variables['object_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);
-  $variables['preview_attributes'] = new \Drupal\Core\Template\Attribute($variables['attributes']);
-  $variables['preview_attributes']['class'] = array_diff($variables['attributes']['class'], $classes);
-  foreach (explode(' ', $style) as $style_id) {
-    $variables['preview_attributes']['class'][] = 'styles--preview--' . $style_id;
-  }
 }
 
 /**
@@ -139,4 +111,37 @@ function styles_apply_to(FieldItemListInterface $items, array &$build) {
   $collection = $styleManager->getCollection($items->getFieldDefinition()->getSetting('collection'));
   $build['#attached']['library'] = array_merge($build['#attached']['library'] ?? [], $collection->getLibraries());
   $build['#attributes']['class'] = array_merge($build['#attributes']['class'] ?? [], $styleManager->extractClasses($items));
+}
+
+function template_preprocess_styles_preview(&$variables) {
+  $variables['style'] = $variables['elements']['#style'] ?? '';
+  $variables['title'] = $variables['elements']['#title'] ?? '';
+  $variables['collection'] = $variables['elements']['#collection'] ?? '';
+  $variables['form_item_id'] = $variables['elements']['#form_item_id'] ?? '';
+  $variables['active'] = $variables['elements']['#active'] ?? FALSE;
+  $variables['toggle'] = $variables['elements']['#toggle'] ?? FALSE;
+
+  /** @var \Drupal\styles\StylesManager $stylesManager */
+  $stylesManager = \Drupal::service('styles.manager');
+  $collection = $stylesManager->getCollection($variables['collection']);
+  $style = $variables['style'];
+
+  if (empty($style)) {
+    $variables['title'] = t('- None -');
+  } else {
+    $variables['title'] = t($collection->getStyles()[$style]);
+  }
+  $variables['preview_type'] = $variables['elements']['#preview_type'] ?? $collection->getPreviewStyle();
+  $variables['#attached']['library'] = array_merge($variables['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+  $variables['attributes']['data-widget'] = $variables['form_item_id'];
+  $variables['attributes']['data-style'] = $style;
+  $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
+
+  $classes = $collection->getClasses($style);
+  $variables['object_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);
+  $variables['preview_attributes'] = new \Drupal\Core\Template\Attribute($variables['attributes']);
+  $variables['preview_attributes']['class'] = array_diff($variables['attributes']['class'], $classes);
+  foreach (explode(' ', $style) as $style_id) {
+    $variables['preview_attributes']['class'][] = 'styles--preview--' . $style_id;
+  }
 }
