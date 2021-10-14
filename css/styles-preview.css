@@ -92,6 +92,11 @@
   height: 40px;
   margin-right: 10px;
 }
+.styles--preview.styles--preview--color-theme.styles--selectable.styles--empty {
+  width: 30px;
+  height: 30px;
+  top: 5px;
+}
 
 .styles--preview.styles--preview--button {
   outline: 3px solid transparent;

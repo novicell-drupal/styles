@@ -136,6 +136,7 @@ function template_preprocess_styles_preview(&$variables) {
   $variables['attributes']['data-widget'] = $variables['form_item_id'];
   $variables['attributes']['data-style'] = $style;
   $variables['attributes']['class'] = $collection->getPreviewClasses($style, $variables['active'], $variables['toggle'], $variables['preview_type']);
+  $variables['attributes']['title'] = $variables['title'];
 
   $classes = $collection->getClasses($style);
   $variables['object_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);

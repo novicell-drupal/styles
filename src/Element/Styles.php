@@ -90,6 +90,11 @@ class Styles extends FormElement {
         '#attached' => [
           'library' => $collection->getLibraries(TRUE)
         ],
+        '#wrapper_attributes' => [
+          'class' => [
+            'form-styles',
+          ],
+        ],
       ]
     );
 
