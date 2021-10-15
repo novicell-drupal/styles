@@ -101,7 +101,7 @@ class StylesManager {
   }
 
   /**
-   * @return StyleCollection
+   * @return StyleCollection|NULL
    */
   public function getCollection($id) {
     /** @var StyleCollection[] $collections */
@@ -109,12 +109,12 @@ class StylesManager {
     if (!isset($collections[$id])) {
       $collection = $this->keyValue->get('styles')->get($id) ?? $this->rebuild()[$id] ?? NULL;
       if (empty($collection)) {
-        \Drupal::logger('styles')->error("Can't find style collection %collection", ['%collection' => $id]);
+        \Drupal::logger('styles')->error("Can't find style collection \"%collection\"", ['%collection' => $id]);
       } else {
         $collections[$id] = new StyleCollection($id, $collection);
       }
     }
-    return $collections[$id];
+    return $collections[$id] ?? NULL;
   }
 
   /**
