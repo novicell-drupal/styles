@@ -101,6 +101,8 @@ class StylesManager {
   }
 
   /**
+   * @param string $id
+   *
    * @return StyleCollection|NULL
    */
   public function getCollection($id) {
@@ -143,12 +145,17 @@ class StylesManager {
   }
 
   /**
+   * @param string $collection_id
+   *
    * @return array
    */
-  public function getOptions($collection) {
+  public function getOptions($collection_id) {
     $options = [];
-    foreach ($this->getCollection($collection)->getStyles() as $key => $value) {
-      $options[$key] = $this->t($value);
+    $collection = $this->getCollection($collection_id);
+    if (!is_null($collection)) {
+      foreach ($collection->getStyles() as $key => $value) {
+        $options[$key] = $this->t($value);
+      }
     }
     return $options;
   }
