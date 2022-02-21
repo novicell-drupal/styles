@@ -1,6 +1,7 @@
 <?php
 namespace Drupal\styles\Element;
 
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element\FormElement;
 
@@ -143,14 +144,14 @@ class Styles extends FormElement {
    *   The complete form render array.
    */
   public static function elementValidateStyles(array &$element, FormStateInterface $form_state, array &$complete_form) {
-    $value = NULL;
-
-    if (!empty($element['#value'])) {
-      $value = $element['#value'];
-
-      if (isset($value['style'])) {
-        $value = $value['style'];
+    $value = NestedArray::getValue($form_state->getValues(), $element['style']['#parents']);
+    if (!empty($value)) {
+      $value = array_filter($value);
+      if (count($value) === 1) {
+        $value = reset($value);
       }
+    } else {
+      $value = NULL;
     }
 
     $form_state->setValueForElement($element, $value);
