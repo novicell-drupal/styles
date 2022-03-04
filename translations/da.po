@@ -34,11 +34,20 @@ msgstr "Felt med en eller flere stile"
 msgid "CSS class formatter"
 msgstr "CSS class formatter"
 
-msgid "Link with style"
-msgstr "Link med stil"
+msgid "Styled link"
+msgstr "Stiliseret link"
+
+msgid "Styled link with target"
+msgstr "Stiliseret link med target"
 
 msgid "Link field with a style"
 msgstr "Link felt med en stil"
 
+msgid "Link field with a style and target"
+msgstr "Link felt med en stil og target"
+
 msgid "Select style to use to display the link"
 msgstr "Vælg hvilken stil du vil bruge til at vise linket"
+
+msgid "Open in a new window"
+msgstr "Åben i et nyt vindue"

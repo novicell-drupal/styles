@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @FieldWidget(
  *   id = "styles_link",
- *   label = @Translation("Link with style"),
+ *   label = @Translation("Styled link"),
  *   description = @Translation("Link field with a style"),
  *   field_types = {
  *     "styles_link"

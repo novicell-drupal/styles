@@ -16,7 +16,7 @@ use Drupal\styles\StylesManager;
  *
  * @FieldType(
  *   id = "styles_link",
- *   label = @Translation("Link with style"),
+ *   label = @Translation("Styled link"),
  *   description = @Translation("Link field with a style"),
  *   category = @Translation("Styles"),
  *   default_widget = "styles_link",
@@ -107,19 +107,6 @@ class StylesLinkType extends LinkItem {
     $element = parent::fieldSettingsForm($form, $form_state);
 
     return $element;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function preSave() {
-    parent::preSave();
-
-    /*if (!isset($this->values['options']['attributes']['class'])) {
-      $this->values['options']['attributes']['class'] = [];
-    }
-    $this->values['options']['attributes']['class'] += explode(' ', $this->values['style']);*/
-
   }
 
   /**

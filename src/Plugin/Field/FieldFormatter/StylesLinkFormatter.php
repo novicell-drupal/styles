@@ -17,7 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @FieldFormatter(
  *   id = "styles_link",
- *   label = @Translation("Link with style"),
+ *   label = @Translation("Styled link"),
  *   field_types = {
  *     "styles_link"
  *   }

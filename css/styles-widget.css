@@ -1,4 +1,6 @@
 .form-styles .form-checkboxes,
-.field--widget-styles .form-checkboxes, .field--widget-styles-link .form-checkboxes {
+.field--widget-styles .form-checkboxes,
+.field--widget-styles-link .form-checkboxes,
+.field--widget-styles-link-target .form-checkboxes {
   display: none;
 }
