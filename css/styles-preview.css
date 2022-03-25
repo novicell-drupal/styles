@@ -3,17 +3,20 @@
 .styles--preview.styles--preview--icon,
 .styles--preview.styles--preview--object,
 .styles--preview.styles--preview--text {
-  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   margin: 5px 1em 5px 0;
   box-sizing: border-box;
+  border: 2px solid transparent;
+  transition: border-radius .2s ease;
 }
 .styles--preview.styles--preview--background.styles--selected,
 .styles--preview.styles--preview--color-theme.styles--selected,
 .styles--preview.styles--preview--icon.styles--selected,
 .styles--preview.styles--preview--object.styles--selected,
 .styles--preview.styles--preview--text.styles--selected {
-  box-shadow: inset 3px 3px 10px 3px rgba(0, 0, 0, 0.5);
+  border: 2px solid #fff;
+  outline: 2px solid #263ed3;
+  border-radius: 0;
 }
 .styles--preview.styles--selectable, .styles--preview.styles--toggleable {
   cursor: pointer;
@@ -56,7 +59,7 @@
   display: inline-block;
   width: 160px;
   height: 70px;
-  padding: 5px;
+  padding: 3px;
   position: relative;
   overflow: hidden;
 }
@@ -69,15 +72,15 @@
 
 .styles--preview.styles--preview--icon {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   overflow: hidden;
-  padding: 5px;
+  padding: 3px;
   margin-right: 10px;
 }
 .styles--preview.styles--preview--icon div {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-size: contain;
 }
 
@@ -88,23 +91,31 @@
   justify-content: center;
   position: relative;
   font-size: 18px;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   margin-right: 10px;
 }
 .styles--preview.styles--preview--color-theme.styles--selectable.styles--empty {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   top: 5px;
+}
+
+.field--type-styles div.styles--preview--button,
+.field--type-styles-link div.styles--preview--button,
+.field--type-styles-link-target div.styles--preview--button {
+  min-height: 30px;
+  padding: 0 30px;
+  border-width: 2px;
+  transition: border-radius .2s ease;
 }
 
 .styles--preview.styles--preview--button {
   outline: 3px solid transparent;
   margin: 5px 1em 5px 0;
 }
-.styles--preview.styles--preview--button.styles--selectable:hover {
-  outline: 3px solid grey;
-}
+.styles--preview.styles--preview--button.styles--selectable:hover,
 .styles--preview.styles--preview--button.styles--selectable.styles--selected {
-  outline: 3px solid black;
+  border: 2px solid #fff;
+  outline: 2px solid #263ed3;
 }
