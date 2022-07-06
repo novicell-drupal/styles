@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - styles
+id: node.field_box_style
+field_name: field_box_style
+entity_type: node
+type: styles
+settings:
+  collection: box_example
+module: styles
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

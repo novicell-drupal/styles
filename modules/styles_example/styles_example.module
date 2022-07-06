@@ -14,7 +14,10 @@ function styles_example_preprocess_node(&$variables) {
     $classes = array_merge($styleManager->extractClasses($node->get('field_box_style')), $styleManager->extractClasses($node->get('field_background')));
     $variables['box_attributes'] = new \Drupal\Core\Template\Attribute(['class' => $classes]);
     $variables['text_attributes'] = styles_get_attribute($node->get('field_text_style'));
+    $variables['content_attributes']['class'] = $styleManager->extractClasses($node->get('field_color_theme'));
     $variables['content_attributes']['class'][] = 'container';
+    $variables['content_attributes']['class'][] = 'style-test';
+    styles_apply_libraries($node->get('field_color_theme'), $variables);
     styles_apply_libraries($node->get('field_box_style'), $variables);
     styles_apply_libraries($node->get('field_background'), $variables);
     styles_apply_libraries($node->get('field_text_style'), $variables);

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_box_style
+    - node.type.style_test
+  module:
+    - styles
+id: node.style_test.field_box_style
+field_name: field_box_style
+entity_type: node
+bundle: style_test
+label: 'Box style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: styles

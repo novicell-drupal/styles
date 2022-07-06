@@ -13,13 +13,22 @@ class StylesExampleForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
 
-    $form['styles'] = [
+    $form['color_theme'] = [
       '#type' => 'styles',
       '#title' => 'Styles',
       '#description' => 'Styles form element.',
       '#collection' => 'color_theme_example',
       '#multiple' => TRUE,
       '#default_value' => 'primary'
+    ];
+
+    $form['styles'] = [
+      '#type' => 'styles',
+      '#title' => 'Text',
+      '#description' => 'Text styles example.',
+      '#collection' => 'text_example',
+      '#multiple' => TRUE,
+      '#default_value' => ''
     ];
 
     $form['actions'] = [

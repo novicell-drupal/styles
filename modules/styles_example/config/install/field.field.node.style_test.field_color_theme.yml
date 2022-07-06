@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color_theme
+    - node.type.style_test
+  module:
+    - styles
+id: node.style_test.field_color_theme
+field_name: field_color_theme
+entity_type: node
+bundle: style_test
+label: 'Color theme'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: styles
