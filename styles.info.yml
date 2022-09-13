@@ -2,7 +2,7 @@ name: Styles
 description: Add widgets for selecting styles for buttons and content boxes.
 type: module
 version: 1.0
-package: Content
+package: Field types
 core_version_requirement: ^8 || ^9
 
 interface translation project: styles

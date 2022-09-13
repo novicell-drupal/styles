@@ -177,4 +177,23 @@ class StylesManager {
     }
     return $this->getCollection($collection)->getClasses($styles);
   }
+
+  /**
+   * @param \Drupal\Core\Field\FieldItemListInterface $items
+   *
+   * @return string[]
+   */
+  public function extractLibraries(FieldItemListInterface $items) {
+    $collection = $items->getSetting('collection');
+    return $this->getCollection($collection)->getLibraries();
+  }
+
+  /**
+   * @param \Drupal\Core\Field\FieldItemListInterface $items
+   * @param array $variables
+   */
+  public function applyTo(FieldItemListInterface $items, &$variables) {
+    $variables['#attached']['library'] = ($variables['#attached']['library'] ?? []) + $this->extractLibraries($items);
+    $variables['attributes']['class'] = ($variables['#attributes']['class'] ?? []) + $this->extractClasses($items);
+  }
 }
