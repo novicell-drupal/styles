@@ -82,6 +82,7 @@
   width: 25px;
   height: 25px;
   background-size: contain;
+  margin: 0;
 }
 
 .styles--preview.styles--preview--color-theme {
