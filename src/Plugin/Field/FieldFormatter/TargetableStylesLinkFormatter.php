@@ -35,7 +35,7 @@ class TargetableStylesLinkFormatter extends StylesLinkFormatter {
     /** @var StylesLinkType $item */
     foreach ($items as $delta => $item) {
       $values = $item->getValue();
-      $values['options']['attributes']['class'] = ($values['options']['attributes']['class'] ?? []) + $this->stylesManager->extractClasses($items, 'style', $delta);
+      $values['options']['attributes']['class'] = array_merge($values['options']['attributes']['class'] ?? [], $this->stylesManager->extractClasses($items, 'style', $delta));
       $values['options']['attributes']['target'] = ($items->get($delta)->get('target_blank')->getValue() == 1 ? '_blank' : '');
       $item->setValue($values);
     }

@@ -193,7 +193,7 @@ class StylesManager {
    * @param array $variables
    */
   public function applyTo(FieldItemListInterface $items, &$variables) {
-    $variables['#attached']['library'] = ($variables['#attached']['library'] ?? []) + $this->extractLibraries($items);
-    $variables['attributes']['class'] = ($variables['#attributes']['class'] ?? []) + $this->extractClasses($items);
+    $variables['attached']['library'] = array_merge($variables['attached']['library'] ?? [], $this->extractLibraries($items));
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'] ?? [], $this->extractClasses($items));
   }
 }

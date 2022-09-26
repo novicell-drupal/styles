@@ -82,7 +82,7 @@ class StylesLinkFormatter extends LinkFormatter {
     /** @var StylesLinkType $item */
     foreach ($items as $delta => $item) {
       $values = $item->getValue();
-      $values['options']['attributes']['class'] = ($values['options']['attributes']['class'] ?? []) + $this->stylesManager->extractClasses($items, 'style', $delta);
+      $values['options']['attributes']['class'] = array_merge($values['options']['attributes']['class'] ?? [], $this->stylesManager->extractClasses($items, 'style', $delta));
       $item->setValue($values);
     }
     $element = parent::viewElements($items, $langcode);
