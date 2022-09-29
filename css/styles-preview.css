@@ -41,6 +41,7 @@
   width: 80px;
   height: 80px;
   top: 10px;
+  font-size: small;
 }
 
 .styles--preview.styles--preview--object {
@@ -77,12 +78,14 @@
   overflow: hidden;
   padding: 3px;
   margin-right: 10px;
+  background-color: #fff;
 }
 .styles--preview.styles--preview--icon div {
   width: 25px;
   height: 25px;
   background-size: contain;
   margin: 0;
+  background-color: #000;
 }
 
 .styles--preview.styles--preview--color-theme {
