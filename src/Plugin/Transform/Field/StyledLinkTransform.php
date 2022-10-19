@@ -12,15 +12,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @FieldTransform(
  *  id = "styled_link",
- *  title = "Styled Link",
- *  description = "A link with a style",
- *  types = {
+ *  label = @Translation("Styled Link"),
+ *  field_types = {
  *    "styled_link",
  *    "styles_link_target"
  *  }
  * )
  */
-class StyledLink extends FieldTransformBase {
+class StyledLinkTransform extends FieldTransformBase {
 
   public function transformElements(FieldItemListInterface $items, $langcode): array {
     $values = [];
