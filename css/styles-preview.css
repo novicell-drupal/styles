@@ -30,10 +30,11 @@
 .styles--preview.styles--preview--object {
   display: inline-flex;
   flex-wrap: wrap;
+  flex-flow: column;
   width: 100px;
   height: 100px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   position: relative;
 }
 .styles--preview.styles--preview--background.styles--selectable.styles--empty,
