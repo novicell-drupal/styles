@@ -1,9 +1,9 @@
 name: Styles
 description: Add widgets for selecting styles for buttons and content boxes.
 type: module
-version: 1.0
+version: "1.0"
 package: Field types
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 
 interface translation project: styles
 interface translation server pattern: modules/contrib/styles/translations/%language.po
