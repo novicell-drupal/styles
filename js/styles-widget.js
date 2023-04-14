@@ -1,6 +1,6 @@
 Drupal.behaviors.styles_widget = {
   attach: function (context, settings) {
-    jQuery('.styles--selectable', context).once('styles--selectable').click(function(e) {
+    jQuery('.styles--selectable', context).click(function(e) {
       e.preventDefault();
       let widget = jQuery('#' + jQuery(this).data('widget'));
       let style = jQuery(this).data('style');
@@ -11,7 +11,7 @@ Drupal.behaviors.styles_widget = {
         widget.find('input[value=' + style + ']').prop('checked', true);
       }
     });
-    jQuery('.styles--toggleable', context).once('styles--toggleable').click(function(e) {
+    jQuery('.styles--toggleable', context).click(function(e) {
       e.preventDefault();
       let widget = jQuery('#' + jQuery(this).data('widget'));
       let style = jQuery(this).data('style');
