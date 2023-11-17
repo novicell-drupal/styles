@@ -79,7 +79,9 @@ class StylesLinkWidget extends LinkWidget {
     $form_item_id = Html::getUniqueId('styles-widget');
     $options = $this->stylesManager->getOptions($collection_id);
 
-    $element['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+    if ($collection) {
+      $element['#attached']['library'] = array_merge($element['#attached']['library'] ?? [], $collection->getLibraries(TRUE));
+    }
 
     $element['style'] = [
       '#type' => 'checkboxes',
