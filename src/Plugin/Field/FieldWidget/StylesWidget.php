@@ -66,6 +66,10 @@ class StylesWidget extends WidgetBase {
       }
     }
     $collection_id = $this->getFieldSetting('collection');
+    if (empty($collection_id)) {
+      return ['#markup' => 'No collection selected'];
+    }
+
     $collection = $this->stylesManager->getCollection($collection_id);
     $form_item_id = Html::getUniqueId('styles-widget');
     $multiple = $this->fieldDefinition->getFieldStorageDefinition()->isMultiple();
