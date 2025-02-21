@@ -3,7 +3,7 @@ namespace Drupal\styles\Element;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element\FormElement;
+use Drupal\Core\Render\Element\FormElementBase;
 
 /**
  * Provides a Styles form element.
@@ -23,7 +23,7 @@ use Drupal\Core\Render\Element\FormElement;
  *     '#multiple' => FALSE,
  *   ];
  */
-class Styles extends FormElement {
+class Styles extends FormElementBase {
 
   /**
    * {@inheritdoc}
