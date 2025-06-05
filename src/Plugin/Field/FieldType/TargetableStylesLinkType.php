@@ -19,7 +19,7 @@ use Drupal\styles\StylesManager;
  *   id = "styles_link_target",
  *   label = @Translation("Styled link with target"),
  *   description = @Translation("Link field with a style and target"),
- *   category = @Translation("Styles"),
+ *   category = "styles",
  *   default_widget = "styles_link_target",
  *   default_formatter = "styles_link_target"
  * )

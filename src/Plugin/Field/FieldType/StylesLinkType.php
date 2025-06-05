@@ -18,7 +18,7 @@ use Drupal\styles\StylesManager;
  *   id = "styles_link",
  *   label = @Translation("Styled link"),
  *   description = @Translation("Link field with a style"),
- *   category = @Translation("Styles"),
+ *   category = "styles",
  *   default_widget = "styles_link",
  *   default_formatter = "styles_link"
  * )

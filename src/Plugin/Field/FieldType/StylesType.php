@@ -26,7 +26,7 @@ use Drupal\user\UserInterface;
  *   module = "styles",
  *   label = @Translation("Styles"),
  *   description = @Translation("Field with one or more styles"),
- *   category = @Translation("Styles"),
+ *   category = "styles",
  *   default_widget = "styles",
  *   default_formatter = "string"
  * )
