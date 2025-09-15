@@ -36,6 +36,8 @@
   align-items: center;
   justify-content: space-evenly;
   position: relative;
+  overflow: hidden;
+  text-wrap: nowrap;
 }
 .styles--preview.styles--preview--background.styles--selectable.styles--empty,
 .styles--preview.styles--preview--object.styles--selectable.styles--empty{
